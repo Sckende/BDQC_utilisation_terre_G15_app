@@ -41,6 +41,7 @@ admin <- dec[dec$RES_NM_REG %in% c(
     "Laurentides",
     "Montérégie"
 ), ]
+# test
 
 
 server <- function(input, output, session) {
