@@ -25,7 +25,8 @@ comp <- readRDS("/home/local/USHERBROOKE/juhc3201/BdQc/ReseauSuivi/Data/g15_indi
 # Several Polygons for Qc
 # -----------------------
 # ---- data pour decoupage admin
-dec <- st_read("/home/local/USHERBROOKE/juhc3201/BdQc/ReseauSuivi/Data/QUEBEC_regions/BDGA_1M(adm)_SHP/regio_s.shp")
+# dec <- st_read("/home/local/USHERBROOKE/juhc3201/BdQc/ReseauSuivi/Data/QUEBEC_regions/BDGA_1M(adm)_SHP/regio_s.shp")
+dec <- st_read("/home/local/USHERBROOKE/juhc3201/BdQc/ReseauSuivi/Data/QUEBEC_regions/QC_admin_reg_simplify.gpkg")
 # selection des regions d'interet
 admin <- dec[dec$RES_NM_REG %in% c(
     "Bas-Saint-Laurent",
