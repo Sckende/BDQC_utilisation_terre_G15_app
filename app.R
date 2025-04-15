@@ -75,6 +75,9 @@ server <- function(input, output, session) {
         ) +
             geom_line(linewidth = 1) +
             labs(title = unique(x$region), color = "Catégories") +
+            xlab("Année") +
+            ylab("Proportion (%)") +
+            scale_x_continuous(n.breaks = length(unique(x$year))) +
             scale_color_manual(
                 labels = c("agriculture", "forêt", "prairie", "autres", "habitation", "milieu humide"),
                 values = c(
@@ -212,12 +215,12 @@ ui <- navbarPage(
             fluidRow(
                 box(
                     title = "Évolution utilisation des terres ESA",
-                    width = 6,
+                    width = 8,
                     plotOutput("trend_plot")
                 ),
                 box(
                     title = "Proportion de type de terre - ESA 2010",
-                    width = 6,
+                    width = 8,
                     plotlyOutput("pie")
                 )
             ),
