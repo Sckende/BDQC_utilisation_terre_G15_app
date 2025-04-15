@@ -143,6 +143,9 @@ server <- function(input, output, session) {
         cp <- rbind(isq, esa[, c("region", "nat_hab", "prop", "year", "data")])
         cp <- cp |> mutate(text = sprintf("Données: %s<br> Proportion: %s <br>", data, round(prop, digits = 2)))
         cp <- cp[order(cp$data, cp$nat_hab), ]
+        cp$nat_hab[cp$nat_hab == "forest"] <- "forêt"
+        cp$nat_hab[cp$nat_hab == "water"] <- "eau"
+        cp$nat_hab[cp$nat_hab == "wetland"] <- "milieu humide"
 
         # figure
         fig <- cp %>% plot_ly()
@@ -181,8 +184,8 @@ server <- function(input, output, session) {
             layout(
                 # title = "Comparaison proportion milieux naturels ESA - ISQ",
                 barmode = "group",
-                xaxis = list(title = ""),
-                yaxis = list(title = ""),
+                xaxis = list(title = "Type"),
+                yaxis = list(title = "Proportion (%)"),
                 showlegend = FALSE
             ) |>
             style(hoverinfo = "none")
